@@ -39,10 +39,19 @@ export default function TaskList({ token }) {
     fetchTasks();
   }, []);
 
+  // Helper: format date
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleString("en-US", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-500 via-blue-500 to-indigo-600 flex flex-col items-center px-4 py-10">
       {/* Title */}
-      <h1 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg mb-6 text-center">
+      <h1 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg mb-12 text-center">
         ✨ Your Tasks
       </h1>
 
@@ -73,7 +82,14 @@ export default function TaskList({ token }) {
             key={task._id}
             className="flex justify-between items-center bg-white/90 rounded-lg px-4 py-2 hover:bg-white transition"
           >
-            <span className="text-gray-800 font-medium">{task.title}</span>
+            <div>
+              <span className="text-gray-800 font-medium block">{task.title}</span>
+              {task.createdAt && (
+                <span className="text-gray-500 text-sm">
+                  ⏰ {formatDate(task.createdAt)}
+                </span>
+              )}
+            </div>
             <button
               onClick={() => deleteTask(task._id)}
               className="text-red-500 font-bold hover:scale-110 transition"
