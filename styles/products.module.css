@@ -1,0 +1,429 @@
+/* styles/products.module.css */
+
+.container {
+  padding: 24px;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+.header {
+  margin-top: 28px;
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;  
+  color: #1e293b;
+  margin: 0 0 8px 0;
+}
+
+.subtitle {
+  color: #64748b;
+  font-size: 16px;
+  margin: 0;
+}
+
+.errorBox {
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 16px;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.errorBox::before {
+  content: '⚠️';
+}
+
+.formCard {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.formTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 20px 0;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.formInput, .formSelect {
+  padding: 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.formInput:focus, .formSelect:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.inputError {
+  border-color: #dc2626;
+}
+
+.inputError:focus {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.errorText {
+  color: #dc2626;
+  font-size: 14px;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.errorText::before {
+  content: '!';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  background: #dc2626;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.recipeSection {
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 16px;
+}
+
+.recipeTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 16px 0;
+}
+
+.recipeItem {
+  display: grid;
+  grid-template-columns: 1fr 100px auto;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.removeRecipeButton {
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.removeRecipeButton:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+.addRecipeButton {
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 12px;
+}
+
+.addRecipeButton:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.formActions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.saveButton {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.saveButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.cancelButton {
+  background: #6b7280;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancelButton:hover {
+  background: #4b5563;
+  transform: translateY(-2px);
+}
+
+.addButton {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.productsList {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.listHeader {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 16px 24px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.productItem {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  gap: 16px;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e7eb;
+  align-items: center;
+}
+
+.productItem:last-child {
+  border-bottom: none;
+}
+
+.productName {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.productSku {
+  color: #64748b;
+  font-family: monospace;
+}
+
+.categoryBadge, .unitBadge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.categoryRaw {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+.categoryFinished {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.unitPcs {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.unitKg {
+  background: #fce7f3;
+  color: #be185d;
+}
+
+.unitL {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.editButton {
+  background: #f59e0b;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.editButton:hover {
+  background: #d97706;
+  transform: translateY(-1px);
+}
+
+.deleteButton {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.deleteButton:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+.emptyState {
+  text-align: center;
+  padding: 40px;
+  color: #6b7280;
+}
+
+.emptyStateIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.emptyStateText {
+  font-size: 18px;
+  margin: 0;
+}
+
+/* Animation for list items */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.productItem {
+  animation: fadeIn 0.3s ease;
+}
+
+.productItem:nth-child(1) { animation-delay: 0.1s; }
+.productItem:nth-child(2) { animation-delay: 0.2s; }
+.productItem:nth-child(3) { animation-delay: 0.3s; }
+.productItem:nth-child(4) { animation-delay: 0.4s; }
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .productItem {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+  
+  .productItem {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 8px;
+  }
+  
+  .formCard {
+    padding: 20px;
+  }
+  
+  .recipeItem {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .actionButtons {
+    justify-content: center;
+  }
+}
+
+/* Custom select styles */
+.selectContainer :global(.react-select__control) {
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 6px;
+  min-height: 44px;
+}
+
+.selectContainer :global(.react-select__control--is-focused) {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.selectContainer :global(.react-select__menu) {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}

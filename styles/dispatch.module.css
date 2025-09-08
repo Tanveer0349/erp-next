@@ -1,0 +1,290 @@
+/* styles/dispatch.module.css */
+
+.container {
+  padding: 24px;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  margin-top: 28px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.errorBox {
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 16px;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.errorBox::before {
+  content: '⚠️';
+}
+
+.createOrderCard {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.createOrderTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 16px 0;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.formInput, .formSelect {
+  padding: 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.formInput:focus, .formSelect:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.stockDisplay {
+  background: #f9fafb;
+  padding: 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  color: #374151;
+}
+
+.createButton {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  height: fit-content;
+}
+
+.createButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.createButton:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.ordersTable {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableHeader {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.tableHeader th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tableBody td {
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tableBody tr:last-child td {
+  border-bottom: none;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.statusPending {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+.statusProcessed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.statusCancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.actionButton {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 8px;
+}
+
+.processButton {
+  background: #10b981;
+  color: white;
+}
+
+.processButton:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.cancelButton {
+  background: #ef4444;
+  color: white;
+}
+
+.cancelButton:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+.emptyState {
+  text-align: center;
+  padding: 40px;
+  color: #6b7280;
+}
+
+.emptyStateIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.emptyStateText {
+  font-size: 18px;
+  margin: 0;
+}
+
+/* Animation for table rows */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tableBody tr {
+  animation: fadeIn 0.3s ease;
+}
+
+.tableBody tr:nth-child(1) { animation-delay: 0.1s; }
+.tableBody tr:nth-child(2) { animation-delay: 0.2s; }
+.tableBody tr:nth-child(3) { animation-delay: 0.3s; }
+.tableBody tr:nth-child(4) { animation-delay: 0.4s; }
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+  
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .createOrderCard {
+    padding: 20px;
+  }
+  
+  .tableHeader th,
+  .tableBody td {
+    padding: 12px;
+  }
+  
+  .actionButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .actionButton {
+    margin-right: 0;
+    width: 100%;
+  }
+}

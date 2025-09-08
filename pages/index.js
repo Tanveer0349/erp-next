@@ -1,33 +1,87 @@
-"use client"; // only if using App Router
-
+// pages/index.js
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import styles from "../styles/landing.module.css";
 
 export default function LandingPage() {
+  const [currentFeature, setCurrentFeature] = useState(0);
+  
+  const features = [
+    "Streamline your business operations",
+    "Real-time inventory management",
+    "Integrated financial analytics",
+    "Customizable workflow automation"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentFeature((prev) => (prev + 1) % features.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="h-screen w-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white overflow-hidden">
-      {/* Tagline */}
-      <h1 className="text-4xl md:text-6xl font-extrabold text-center mb-6 drop-shadow-lg">
-        "Organize Today, Conquer Tomorrow 🚀"
-      </h1>
+    <div className={styles.landingContainer}>
+      {/* Animated background */}
+      <div className={styles.animatedBackground}></div>
+      
+      {/* Main content */}
+      <div className={styles.contentWrapper}>
+        {/* Logo/Brand */}
+        <div className={styles.logo}>
+          <span className={styles.logoIcon}>📊</span>
+          <h1 className={styles.logoText}>ERP Next</h1>
+        </div>
 
-      {/* Subtitle */}
-      <p className="text-lg md:text-xl text-center mb-10 max-w-2xl">
-        Stay productive and in control with your personalized Task Manager.
-      </p>
+        {/* Hero section */}
+        <div className={styles.heroSection}>
+          <h1 className={styles.mainHeading}>
+            Transform Your <span className={styles.highlight}>Business</span> Operations
+          </h1>
+          
+          {/* Animated feature text */}
+          <div className={styles.featureText}>
+            {features.map((feature, index) => (
+              <p 
+                key={index} 
+                className={`${styles.featureItem} ${index === currentFeature ? styles.featureItemActive : ''}`}
+              >
+                {feature}
+              </p>
+            ))}
+          </div>
 
-      {/* Buttons */}
-      <div className="flex gap-6">
-        <Link href="/login">
-          <button className="px-6 py-3 rounded-2xl bg-white text-indigo-700 font-semibold shadow-lg hover:scale-105 transition">
-            Login
-          </button>
-        </Link>
+          {/* CTA Button */}
+          <div className={styles.ctaContainer}>
+            <Link href="/login">
+              <button className={styles.ctaButton}>
+                Get Started
+                <span className={styles.buttonIcon}>→</span>
+              </button>
+            </Link>
+          </div>
 
-        <Link href="/register">
-          <button className="px-6 py-3 rounded-2xl bg-indigo-500 text-white font-semibold shadow-lg hover:scale-105 transition">
-            Register
-          </button>
-        </Link>
+          {/* Stats preview */}
+          <div className={styles.statsContainer}>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>500+</span>
+              <span className={styles.statLabel}>Businesses Empowered</span>
+            </div>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>99.9%</span>
+              <span className={styles.statLabel}>Uptime</span>
+            </div>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>24/7</span>
+              <span className={styles.statLabel}>Support</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className={styles.footer}>
+          <p>© {new Date().getFullYear()} ERP Next. All rights reserved.</p>
+        </div>
       </div>
     </div>
   );

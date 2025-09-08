@@ -1,0 +1,515 @@
+/* styles/workorders.module.css */
+
+.container {
+  padding: 24px;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+.header {
+  margin-bottom: 32px;
+  margin-top: 28px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 8px 0;
+}
+
+.subtitle {
+  color: #64748b;
+  font-size: 16px;
+  margin: 0;
+}
+
+.errorBox {
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 16px;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.errorBox::before {
+  content: '⚠️';
+}
+
+.createCard {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.createTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 20px 0;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr auto;
+  gap: 12px;
+  align-items: end;
+  margin-bottom: 16px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.formInput, .formSelect {
+  padding: 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.formInput:focus, .formSelect:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.inputError {
+  border-color: #dc2626;
+}
+
+.createButton {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.createButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.createButton:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.previewSection {
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.previewTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 16px 0;
+}
+
+.previewTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.previewTable th {
+  background: #f1f5f9;
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #475569;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.previewTable td {
+  padding: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.previewTable tr:last-child td {
+  border-bottom: none;
+}
+
+.shortageWarning {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.ordersCard {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.ordersHeader {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 16px 24px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.ordersTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ordersTable th {
+  background: #f1f5f9;
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  color: #475569;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.ordersTable td {
+  padding: 16px;
+  border-bottom: 1px solid #e2e8f0;
+  vertical-align: middle;
+}
+
+.ordersTable tr:last-child td {
+  border-bottom: none;
+}
+
+.ordersTable tr:hover {
+  background: #f8fafc;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.statusPending {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+.statusProcessing {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.statusCompleted {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.statusCancelled {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* ACTION BUTTONS STYLES - These were missing! */
+.actionButtons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.processButton {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  min-width: 80px;
+}
+
+.processButton:hover:not(:disabled) {
+  background: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.processButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.cancelButton {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  min-width: 80px;
+}
+
+.cancelButton:hover:not(:disabled) {
+  background: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cancelButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.statusText {
+  font-size: 14px;
+  color: #6b7280;
+  font-style: italic;
+  text-align: center;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+.paginationButton {
+  background: white;
+  border: 1px solid #d1d5db;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.paginationButton:hover:not(:disabled) {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.paginationButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.paginationInfo {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 40px;
+  color: #6b7280;
+}
+
+.emptyStateIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.emptyStateText {
+  font-size: 18px;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Animation for table rows */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ordersTable tbody tr {
+  animation: fadeIn 0.3s ease;
+}
+
+.ordersTable tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.ordersTable tbody tr:nth-child(2) { animation-delay: 0.2s; }
+.ordersTable tbody tr:nth-child(3) { animation-delay: 0.3s; }
+.ordersTable tbody tr:nth-child(4) { animation-delay: 0.4s; }
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .formRow {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .createButton {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+  
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .createButton {
+    grid-column: span 1;
+  }
+  
+  .createCard {
+    padding: 20px;
+  }
+  
+  .ordersTable {
+    display: block;
+    overflow-x: auto;
+  }
+  
+  .ordersTable th,
+  .ordersTable td {
+    padding: 12px 8px;
+    font-size: 14px;
+  }
+  
+  .actionButtons {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .processButton,
+  .cancelButton {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .ordersHeader {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+  
+  .statusBadge {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+  
+  .previewTable {
+    display: block;
+    overflow-x: auto;
+  }
+  
+  .previewTable th,
+  .previewTable td {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 24px;
+  }
+  
+  .createTitle {
+    font-size: 18px;
+  }
+  
+  .ordersTable {
+    font-size: 13px;
+  }
+  
+  .processButton,
+  .cancelButton {
+    padding: 6px 12px;
+    font-size: 12px;
+    min-width: 70px;
+  }
+  
+  .pagination {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .paginationButton {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Force visibility for action buttons */
+.ordersTable td:last-child {
+  min-width: 150px;
+  text-align: center;
+}
+
+.actionButtons {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.processButton, .cancelButton {
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: inline-block !important;
+}
+.successBox {
+  background: #f0fdf4;
+  color: #166534;
+  padding: 16px;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.successBox::before {
+  content: '✓';
+  font-weight: bold;
+}

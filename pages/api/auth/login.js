@@ -1,24 +1,53 @@
-import connectDB from "@/lib/db";
-import User from "@/models/User";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+import { connectDB } from '@/lib/db';
+import Employee from '@/models/Employee';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 export default async function handler(req, res) {
-  if (req.method !== "POST") return res.status(405).end();
-
   await connectDB();
+
+  if (req.method !== 'POST') {
+    return res.status(405).end();
+  }
+
   const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ message: "Invalid credentials" });
+    // Find employee with password field included
+    const employee = await Employee.findOne({ email }).select("+password");
+    if (!employee) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
 
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
+    // Check password
+    const isMatch = await bcrypt.compare(password, employee.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
-
-    res.json({ token, user: { id: user._id, name: user.name, email: user.email } });
+    // Sign JWT
+    const token = jwt.sign(
+      {
+        id: employee._id,
+        email: employee.email,
+        role: employee.role,
+        department: employee.department,
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
+    );
+    // Respond with token + employee info
+    const userData={
+        id: employee._id,
+        name: employee.name,
+        email: employee.email,
+        role: employee.role,
+        department: employee.department,
+      };
+    res.json({
+      token,
+      user: userData,
+    });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
