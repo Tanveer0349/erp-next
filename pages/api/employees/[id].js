@@ -1,9 +1,9 @@
-import { dbConnect } from "@/lib/mongodb";
+import { connectDB } from "@/lib/db";
 import Employee from "@/models/Employee";
 import bcrypt from "bcryptjs";
 
 export default async function handler(req, res) {
-  await dbConnect();
+  await connectDB();
   const { id } = req.query;
 
   if (req.method === "GET") {
