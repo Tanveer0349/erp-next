@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     await connectDB();
 
     const saltRounds = 12;
-    const hashedPassword = await bcrypt.hash('superadmin', saltRounds);
+    const hashedPassword = await bcrypt.hash(process.env.SEED_PASSWORD, saltRounds);
 
     // check if admin exists
     const existingAdmin = await Employee.findOne({ email: "admin@example.com" });
